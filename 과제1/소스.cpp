@@ -7,6 +7,8 @@ int main()
 	const char* origifname = "C:\\Users\\dinle\\cap.png";
 	const char* copyfname = "C:\\Users\\dinle\\cpacopy.png";
 
+
+	//파일입력 open 및 오류검사
 	ifstream infile(origifname, ios::in | ios::binary);
 	if (!infile)
 	{
@@ -15,7 +17,7 @@ int main()
 	}
 
 
-
+	//파일출력 open 및 오류검사
 	ofstream outfile(copyfname, ios::out | ios::binary);
 	if (!outfile)
 	{
@@ -24,9 +26,8 @@ int main()
 	}
 
 
-
+	//파일을 읽어 버퍼를 통해 새로운 파일을 씀
 	char buf[1024];
-
 	while (!infile.eof())
 	{
 		infile.read(buf, 1024);
@@ -36,6 +37,7 @@ int main()
 
 	cout << "복사완료" << endl;
 
+	//파일 닫기
 	infile.close();
 	outfile.close();
 
