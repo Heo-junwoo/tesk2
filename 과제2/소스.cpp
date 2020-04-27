@@ -4,16 +4,30 @@
 using namespace std;
 
 
-void sum(const char* filename)
+int sum(const char* filename)
 {
-	ifstream table(filename);
-	char line[255];
-	while (!table.eof())
-	{
-		table.getline(line, 255);
-		cout << stoi(line);
-	}
 
+	ifstream table(filename);
+	if (!table)
+	{
+		cout <<  "읽기오류";
+		return 0;
+	}
+	
+	int temp;
+
+	while(!table.eof())
+	{
+		int net = 0;
+		for (int j = 0; j < 2; j++)
+		{
+			table >> temp;
+			net = net + temp;
+		}
+		cout << net << endl;
+	}
+	
+	return 0;
 }
 
 int main()
